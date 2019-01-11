@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "es5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
+    "lib":[
+      "es2017",
+      "dom",
+      "scripthost"
+    ],
+    "module": "ESNext",                       /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
+    "jsx": "react",                           /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+    "allowJs": true,                          /* Allow javascript files to be compiled. */
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@view/*": ["./src/view/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@api/*": ["./src/api/*"],
+      "@store/*": ["./src/store/*"],
+      "@decorators/*": ["./src/decorators/*"],
+      "@assets/*": ["./src/assets/*"],
+    },
+    // "paths": {
+    //   "@/*": ["./src/*"],
+    // },
+    /* Strict Type-Checking Options */
+    "strict": true,                           /* Enable all strict type-checking options. */
+    "moduleResolution": "node",               /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "baseUrl": ".",                           /* Base directory to resolve non-absolute module names. */                                     /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+    // "esModuleInterop": true,                   /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,            /* Enables experimental support for ES7 decorators. */
+    "outDir": "./dist",
+    "sourceMap": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build"
+  ]
+}

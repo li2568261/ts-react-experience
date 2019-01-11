@@ -1,0 +1,535 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>react状态管理 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="react.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="begin.html">
+            
+                <a href="begin.html">
+            
+                    
+                    起手式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="typescript.html">
+            
+                <a href="typescript.html">
+            
+                    
+                    typescript 一些心得
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="react.html">
+            
+                <a href="react.html">
+            
+                    
+                    react一些基本思路
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="redux.html">
+            
+                <a href="redux.html">
+            
+                    
+                    react状态管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >react状态管理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="react&#x7684;&#x72B6;&#x6001;&#x7BA1;&#x7406;">react&#x7684;&#x72B6;&#x6001;&#x7BA1;&#x7406;</h1>
+<h3 id="context">Context</h3>
+<p>&#x4E1A;&#x52A1;&#x5F53;&#x4E2D;&#xFF0C;&#x5E38;&#x5E38;&#x5B58;&#x5728;&#x7EC4;&#x4EF6;&#x4E4B;&#x95F4;&#x6570;&#x636E;&#x5171;&#x7528;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x7EC4;&#x4EF6;&#x5C42;&#x7EA7;&#x5173;&#x7CFB;&#x53EF;&#x80FD;&#x5F88;&#x590D;&#x6742;&#xFF0C;&#x901A;&#x8FC7;props&#x8FDB;&#x884C;&#x4F20;&#x9012;&#x5C06;&#x4F1A;&#x6781;&#x5176;&#x7684;&#x7E41;&#x7410;&#x3002;<code>react</code>&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;<code>context</code>&#x65B9;&#x4FBF;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x5171;&#x4EAB;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x4E5F;&#x6781;&#x5176;&#x7684;&#x7B80;&#x4FBF;&#x3002;</p>
+<pre><code class="lang-typescript">const {Provider, Consumer} = React.createContext(&apos;nihao&apos;);
+
+const demo = value=&gt;{
+    return &lt;div&gt;{value}&lt;/div&gt;
+}
+// &#x65B9;&#x5F0F;1
+&lt;Provider value=&quot;hello world&quot;&gt;
+    // ... &#x82E5;&#x5E72;&#x5C42;&#x7EA7;&#x6216;&#x8005;&#x4EA4;&#x53C9;&#xFF0C;&#x8FD9;&#x91CC;&#x5C55;&#x793A; hello world&#xFF0C;&#x8BB0;&#x4F4F;&#x8FD9;&#x91CC;&#x6309;&#x7167;&#x4E0A;&#x4E00;&#x7AE0;&#x8BF4;&#x7684;props render&#x7684;&#x5199;&#x6CD5;
+    &lt;Consumer&gt;
+        {demo}
+    &lt;/Consumer&gt;
+&lt;/Provider&gt;
+// &#x65B9;&#x5F0F;2
+// ...&#x7236;&#x5C42;&#x7EA7;&#xFF0C;&#x6700;&#x9876;&#x5C42;&#x6CA1;&#x6709;&#x4F7F;&#x7528;Provider&#x4F1A;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x503C;&#x5C55;&#x793A; &apos;nihao&apos;
+&lt;Consumer&gt;
+   {demo}
+&lt;/Consumer&gt;
+// &#x4E3A;&#x4E86;&#x4F7F;&#x5F97;&#x6570;&#x636E;&#x80FD;&#x83B7;&#x5F97;&#x76F8;&#x5E94;&#x5E76;&#x4E14;&#x4F7F;&#x5F97;&#x89C6;&#x56FE;&#x5237;&#x65B0;&#x54B1;&#x4EEC;&#x53EF;&#x4EE5;
+const {Provider, Consumer} = React.createContext();
+class Pvd extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          hello: &apos;hello&apos;,
+        };
+    }
+      this.setHello = hello =&gt; this.setState({ hello });
+    render(){
+        return &lt;Provider value={{hello: this.state.hello, setHello: this.setHello}}&gt;
+            // ... &#x82E5;&#x5E72;&#x5C42;&#x7EA7;&#x6216;&#x8005;&#x4EA4;&#x53C9;&#xFF0C;&#x8FD9;&#x91CC;&#x5C55;&#x793A; hello world&#xFF0C;&#x8BB0;&#x4F4F;&#x8FD9;&#x91CC;&#x6309;&#x7167;&#x4E0A;&#x4E00;&#x7AE0;&#x8BF4;&#x7684;props render&#x7684;&#x5199;&#x6CD5;
+            {this.props.children}
+        &lt;/Provider&gt;
+    }
+}
+const App = (props)=&gt;{
+    const ConsumerU = props.context.Consumer || Consumer;
+    return &lt;Pvd&gt;
+       &lt;ConsumerU&gt;
+        {
+            props=&gt;{
+                return &lt;div onClick={()=&gt;props.setHello(Math.random())}&gt;{props.data}&lt;/div&gt;
+            }
+        } 
+       &lt;/ConsumerU&gt;
+    &lt;/Pvd&gt;
+}
+</code></pre>
+<h3 id="redux">redux</h3>
+<p>&#x5B9E;&#x9645;<code>spa</code>&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x516C;&#x7528;&#x6570;&#x636E;&#x6A21;&#x578B;&#x5F80;&#x5F80;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#xFF0C;&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x90A3;&#x79CD;&#x65B9;&#x5F0F;&#x5F88;&#x5BB9;&#x6613;&#x903B;&#x8F91;&#x6DF7;&#x4E71;&#xFF0C;&#x4E3A;&#x4E86;&#x4F7F;&#x5176;&#x80FD;&#x591F;&#x4FBF;&#x4E8E;&#x7BA1;&#x7406;&#xFF0C;&#x5E38;&#x5E38;&#x4F1A;&#x5F15;&#x5165;<code>redux</code>&#x3002;&#x901A;&#x8FC7;&#x9605;&#x8BFB;<a href="https://github.com/li2568261/react-redux-source-read/tree/master/redux" target="_blank">redux</a>&#x6E90;&#x7801;&#x53D1;&#x73B0;&#xFF0C;&#x4ED6;&#x662F;&#x5178;&#x578B;&#x7684;&#x4EE5;&#x8BA2;&#x9605;&#x53D1;&#x5E03;&#x6A21;&#x5F0F;&#x8BBE;&#x8BA1;&#x601D;&#x8DEF;&#xFF0C;&#x7528;&#x7EAF;&#x51FD;&#x6570;&#x5904;&#x7406;&#x6570;&#x636E;&#x6D41;&#x3002;&#x4E3B;&#x8981;&#x6709;&#x4EE5;&#x4E0B;&#x4E00;&#x4E9B;&#x6982;&#x5FF5;&#xFF1A;</p>
+<ol>
+<li>reducer &#x7528;&#x4F5C;&#x5B9A;&#x4E49; state &#x66F4;&#x65B0;&#x65B9;&#x5F0F;&#x3002;</li>
+<li>action &#x7528;&#x4F5C; state &#x66F4;&#x65B0;&#x6307;&#x4EE4;&#xFF0C;&#x4E00;&#x822C; type &#x662F;&#x5B83;&#x5FC5;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x3002;</li>
+<li>reducer &#x63A5;&#x6536; action &#x4ECE;&#x800C;&#x9009;&#x53D6; state &#x66F4;&#x65B0;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#xFF0C;&#x6CE8;&#x610F;reducer&#x5FC5;&#x987B;&#x6709;&#x4E00;&#x4E2A;&#x5F53;&#x5B58;&#x5728;&#x4E0D;&#x80FD;&#x8BC6;&#x522B;action&#x65F6;&#x5019;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x3002;</li>
+<li>applymiddleware &#x7528;&#x4E8E;&#x4E00;&#x4E9B; action &#x7684;&#x524D;&#x7F6E;&#x5904;&#x7406;&#x3002;</li>
+</ol>
+<p>&#x4F7F;&#x7528;&#x601D;&#x8DEF;&#xFF1A;</p>
+<ol>
+<li>&#x901A;&#x8FC7;createStore&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x4ED3;&#x5E93;store&#x3002;</li>
+<li>store &#x80FD; dispatch &#x4E00;&#x4E2A; action &#xFF0C;reducer &#x63A5;&#x6536;&#x5230; action &#x4F1A;&#x51B3;&#x5B9A;&#x63A5;&#x4E0B;&#x6765; state &#x7684;&#x503C;&#x3002;</li>
+<li>store &#x80FD;&#x591F; store.subscribe() &#x589E;&#x52A0;&#x8BA2;&#x9605;&#x8005;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x89E3;&#x9664;&#x8BA2;&#x9605;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5F53;&#x65B0;&#x589E;&#x8BA2;&#x9605;&#x540E;&#x4F1A;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#x5BF9;&#x4ED6;&#x4EEC;&#x8FDB;&#x884C;&#x7EF4;&#x62A4;&#xFF0C;&#x5F53;&#x53D1;&#x751F; dispatch &#x884C;&#x4E3A;&#x65F6;&#xFF0C;&#x961F;&#x5217;&#x7684;&#x76D1;&#x542C;&#x56DE;&#x8C03;&#x4F1A;&#x88AB;&#x4F9D;&#x6B21;&#x8C03;&#x7528;&#x3002;</li>
+<li>&#x5F53; dispatch &#x53D1;&#x751F;&#x540E; subscribe &#x7684;&#x56DE;&#x8C03;&#x4F1A;&#x8FD0;&#x884C;&#xFF0C;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; store.getState() &#x6839;&#x636E; state &#x7684;&#x503C;&#x505A;&#x51FA;&#x76F8;&#x5E94;&#x7684;&#x53CD;&#x5E94;&#x3002;</li>
+<li>&#x5F53;&#x4F60;&#x67D0;&#x4E9B; action &#x9700;&#x8981;&#x524D;&#x7F6E;&#x5904;&#x7406;&#x65F6;&#x4F60;&#x9700;&#x8981;&#x4F7F;&#x7528; middleware&#x3002;<a href="https://juejin.im/post/5c1ddf4fe51d451fc377e9fd" target="_blank">applymiddleware&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;</a></li>
+</ol>
+<h3 id="redux-saga">redux-saga</h3>
+<p>&#x4F5C;&#x4E3A;<code>redux</code>&#x5904;&#x7406;&#x5F02;&#x6B65;&#x6570;&#x636E;&#x6D41;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x4E4B;&#x4E00;&#xFF0C;saga &#x5229;&#x7528; generator &#x53EF;&#x4EE5;&#x591A;&#x6B21;&#x8FD4;&#x56DE;&#x4EE5;&#x53CA;&#x5185;&#x90E8;&#x6302;&#x8D77;&#x673A;&#x5236;&#x7684;&#x7279;&#x6027;(&#x5177;&#x4F53;&#x5C31;&#x4E0D;&#x5728;&#x8FD9;&#x5C55;&#x5F00;&#x4E86;)&#xFF0C;&#x66F4;&#x597D;&#x7684;&#x5904;&#x7406;&#x5F02;&#x6B65;&#x6570;&#x636E;&#x6D41;&#xFF0C;&#x4E0B;&#x9762;&#x7528;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x6765;&#x5C55;&#x793A;&#x4ED6;&#x4EEC;&#x7684;&#x7528;&#x6CD5;&#x3002;ps:&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x7528;thunk&#xFF0C;<del>&#x56E0;&#x4E3A;&#x7B80;&#x5355;&#x7684;&#x4EE4;&#x4EBA;&#x53D1;&#x6307;&#xFF0C;&#x903C;&#x683C;&#x5B8C;&#x5168;&#x4E0D;&#x591F;</del>&#x56E0;&#x4E3A;thunk&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x662F;dispatch&#x975E;&#x6807;&#x51C6;&#x683C;&#x5F0F;&#x7684; action&#xFF0C;&#x800C;&#x4E14;&#x5B9E;&#x9645;&#x6570;&#x636E;&#x4EA4;&#x4E92;&#x8FD8;&#x662F;&#x653E;&#x5728;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF08;&#x8FD9;&#x4E2A;&#x662F;&#x91CD;&#x70B9;&#xFF09;&#x3002;</p>
+<pre><code class="lang-typescript">import {combineReducers, createStore, applyMiddleware, Dispatch, Middleware, AnyAction, MiddlewareAPI} from &apos;redux&apos;;
+import createSagaMiddleware from &apos;redux-saga&apos;;
+import root from &apos;./saga&apos;;
+// &#x4E24;&#x4E2A;&#x6570;&#x636E;&#x6A21;&#x578B;
+import user from &apos;./model/User&apos;;
+// &#x9875;&#x9762;&#x63A7;&#x5236;&#x6A21;&#x578B;
+import pageCommonConfig from &apos;./model/PageCommonConfig&apos;;
+
+// log&#x4E2D;&#x95F4;&#x4EF6;
+const logMiddleWare:Middleware = (store: MiddlewareAPI)=&gt;(next: Dispatch&lt;AnyAction&gt;)=&gt;(action:any)=&gt;{
+    console.log(&apos;log:&apos;, action);
+    return next(action);
+}
+// &#x8C03;&#x7528; redux-saga &#x5305;&#x4E2D;&#x7684; createSagaMiddleware ,&#x521B;&#x5EFA;&#x4E00;&#x4E2A;sageMiddleware
+const sageMiddleware = createSagaMiddleware();
+export default createStore(
+    combineReducers({ user , pageCommonConfig}),
+    applyMiddleware(
+        logMiddleWare,
+        sageMiddleware
+    )
+);
+sageMiddleware.run(root);
+
+
+// root &#x5B9A;&#x4E49;
+import { all, fork, CallEffectFn } from &apos;redux-saga/effects&apos;;
+import * as User from &apos;./User&apos;;
+// import * as Goods from &apos;./Goods&apos;;
+
+var forkArray:any[] = [];
+// fork &#x662F;&#x975E;&#x963B;&#x585E;&#x8BD5;&#x76D1;&#x542C;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x540C;&#x65F6;&#x76D1;&#x542C;&#x591A;&#x4E2A;action
+const makeItertorArrayFrok = (arr: CallEffectFn&lt;any&gt;[])=&gt;arr.map(item=&gt;fork(item));
+
+const geratorForkArray = (...arg: {}[])=&gt;{
+    arg.forEach(item=&gt;{
+        forkArray = forkArray.concat(makeItertorArrayFrok(Object.values(item)));
+    })
+}
+// &#x628A;&#x6240;&#x6709;&#x8981;&#x76D1;&#x542C;&#x7684; generator &#x5BF9;&#x8C61;&#x90FD;&#x5305;&#x88C5;&#x5230;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;
+geratorForkArray(User);
+
+export default function* root(){
+    try {
+       // &#x901A;&#x8FC7; all &#x542F;&#x52A8;&#x5BF9;&#x6240;&#x6709; generator &#x7684;&#x76D1;&#x542C;&#x3002;
+       yield all(forkArray);
+    } catch(e){
+        console.log(e);
+    }
+}
+
+// User Address &#x7684; CRUD
+import { setUserCredit, setUserAddress, setAddressCodeTable, addOrEditUserAddress } from &apos;@store/model/User/actions&apos;;
+import { getUserCredit, getUserAddress , deleteUserAddress, modiUserAddress, getAddressTableCode} from &apos;@api/user&apos;;
+import { modiAddressItem as modiAddressI } from &apos;./actions&apos;;
+import { take, call, put, takeEvery, select} from &quot;redux-saga/effects&quot;;
+
+// &#x5220;&#x9664;&#x8B66;&#x544A;
+function showDeleteAlert(title= &apos;&#x8B66;&#x544A;&apos;, tips= &apos;&#x4F60;&#x786E;&#x5B9A;&#x8981;&#x5220;&#x9664;&#x5F53;&#x524D;&#x5730;&#x5740;&#x5417;?&apos;){
+    return new Promise((resolve,reject)=&gt;{
+        const alertInstance = alert(title, tips, [
+            { text: &apos;&#x53D6;&#x6D88;&apos;, onPress: () =&gt; {reject();alertInstance.close()}, style: &apos;default&apos; },
+            { text: &apos;&#x786E;&#x5B9A;&apos;, onPress: () =&gt; {resolve();console.log(&apos;&#x786E;&#x5B9A;&apos;)} },
+        ]);
+    })
+
+};
+// take &#x7528;&#x4E8E;&#x76D1;&#x542C; action
+// call &#x7528;&#x4E8E;&#x8C03;&#x7528;&#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5E94;&#x8BE5;&#x662F;&#x4E2A; generator &#x51FD;&#x6570;&#x6216;&#x8005;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;Promise&#x3002;
+export function* queryAddress(){
+    try{
+        // take &#x53EA;&#x76D1;&#x542C; type &#x4E3A; queryAddress &#x7684; action &#x4E00;&#x6B21;&#x3002;
+        // &#x56E0;&#x4E3A;&#x67E5;&#x627E;&#x5730;&#x5740;&#x53EA;&#x7528;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x8FDB;&#x884C;&#x57FA;&#x7840;&#x7684;&#x6570;&#x636E;&#x6784;&#x5EFA;&#x5373;&#x53EF;&#x3002;
+        yield take(&apos;queryAddress&apos;);
+        // &#x5F53;&#x6709;&#x8FD9;&#x4E2A; action &#x88AB;&#x6D3E;&#x53D1;&#x65F6;&#x5F80;&#x4E0B;&#x8D70;&#x53BB;&#x8BF7;&#x6C42;&#x6570;&#x636E;
+        const res = yield call(getUserAddress);
+        // &#x62FF;&#x5230;&#x7ED3;&#x679C;&#x5F80; reducer &#x5C42;&#x629B;
+        yield put(setUserAddress(res));
+    } catch (e) {
+
+    }
+}
+
+export function* deleteAddressItem(){
+    // takeEvery &#x76D1;&#x542C;&#x591A;&#x6B21;&#xFF0C;&#x63A5;&#x6536;&#x4E00;&#x4E2A; generator &#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;
+    yield takeEvery(&apos;deleteAddressItem&apos;,function*(action: AnyAction){
+        try{
+            // &#x5220;&#x9664;&#x8B66;&#x544A;&#xFF0C;&#x7B49;&#x5F85;&#x54CD;&#x5E94;
+            yield call(showDeleteAlert)
+            // select &#x7528;&#x4E8E;&#x67E5;&#x8BE2; state &#x91CC;&#x7684;&#x503C;&#xFF0C;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x3002;&#x7136;&#x540E;&#x628A;&#x503C;&#x62F7;&#x8D1D;&#x51FA;&#x6765;&#xFF0C;&#x56E0;&#x4E3A;&#x662F;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF0C;&#x4E0D;&#x8981;&#x6539;&#x53D8;&#x539F;&#x6709;&#x7ED3;&#x6784;&#x3002;
+            const address: Address[] = [...yield select((state:MallStoreState)=&gt;state.user.address)];
+            // &#x627E;
+            let result = address.findIndex(val=&gt;val.addressId === action.id);
+            // &#x627E;&#x5230;
+            if(result !== -1){
+                // &#x9ED8;&#x8BA4;&#x5730;&#x5740;&#x4E0D;&#x8BA9;&#x5220;
+                if(address[result].isDefaultAddress == &quot;Y&quot;)return Toast.fail(&apos;&#x9ED8;&#x8BA4;&#x5730;&#x5740;&#x4E0D;&#x80FD;&#x5220;&#x9664;&apos;, 1);        // &#x670D;&#x52A1;&#x5668;&#x5220;&#x9664;
+                yield call(deleteUserAddress, address[result].addressId, address[result].channel);
+            }
+            // &#x672C;&#x5730;&#x5220;&#x9664;
+            if(address){
+                address.splice(result,1);
+                yield put(setUserAddress(address));
+                Toast.success(&apos;&#x5220;&#x9664;&#x6210;&#x529F;&apos;, 1);
+            }
+        } catch (e) {
+
+        }
+    });
+
+}
+
+// &#x4FEE;&#x6539;&#x9ED8;&#x8BA4;&#x5730;&#x5740;
+export function* modiAddressItemDefault(){
+    // &#x4E0D;&#x89E3;&#x91CA;
+    yield takeEvery(&apos;modiAddressItemDefault&apos;,function*(action: AnyAction){
+        try{
+            // &#x4E0D;&#x89E3;&#x91CA;+1
+            const address: Address = yield select((state:MallStoreState)=&gt;(state.user.address as Address[]).find(val=&gt;val.addressId === action.id));
+
+            if(address.isDefaultAddress === &quot;N&quot;) {
+                // &#x5B83;&#x8FD8;&#x53EF;&#x4EE5;&#x629B;&#x7ED9;&#x81EA;&#x5DF1;&#x5C31;&#x662F;&#x5F80;&#x4E0B;&#x629B;&#x4E0D;&#x629B;&#x5230;reducer&#x5C42;
+                yield put(modiAddressI(Object.assign({}, address, {isDefaultAddress : &apos;Y&apos;})));
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    })
+}
+// &#x4E0D;&#x89E3;&#x91CA;+2
+export function* modiAddressItem(){
+
+    yield takeEvery(&apos;modiAddressItem&apos;,function*(action: AnyAction){
+        try{
+
+            const addressId = yield call(modiUserAddress, action.address);
+
+            yield put(addOrEditUserAddress(Object.assign(action.address, {addressId: +addressId})));
+        } catch (e) {
+
+        }
+    });
+
+}
+</code></pre>
+<h3 id="react-redux">react-redux</h3>
+<p><code>react</code> &#x7EC4;&#x4EF6;&#x516C;&#x5171;&#x6570;&#x636E;&#x7BA1;&#x7406;&#x8BB2;&#x5B8C;&#x4E86;&#xFF0C;<code>redux</code> &#x8BB2;&#x5B8C;&#x4E86;&#x3002;&#x8981;&#x5C06; <code>redux</code> &#x548C; <code>react</code> &#x4E32;&#x8054;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x4F1A;&#x7528;&#x5230; <code>react-redux</code> &#x3002;&#x6839;&#x636E;&#x6211;&#x4EEC;&#x5E38;&#x8FC7;&#x7684; `react-redux &#x65B9;&#x6CD5;&#x548C;&#x7EC4;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x5C1D;&#x8BD5;&#x7740;&#x7406;&#x89E3;&#x4E00;&#x4E0B;&#x4ED6;&#x4EEC;&#x7684;&#x6784;&#x9020;&#x601D;&#x8DEF;&#x3002;</p>
+<ol>
+<li><p>Provider</p>
+</li>
+<li><p>&#x9996;&#x5148;&#x8FD9;&#x662F;&#x4E00;&#x4E2A; <code>react</code> &#x7EC4;&#x4EF6;&#xFF0C;&#x7EC4;&#x4EF6;&#x53C2;&#x6570;&#x63A5;&#x6536;&#x4E00;&#x4E2A; <code>redux</code>  &#x7684; <code>store</code>&#x3002;</p>
+</li>
+<li><code>context.Provider</code> &#x4E2D;&#x7684;  &#xFF0C;&#x63A5;&#x6536;&#x7684;&#x80AF;&#x5B9A;&#x662F; <code>store.getState</code> &#x7684;&#x503C;&#x3002;</li>
+<li>&#x4E3A;&#x4E86; <code>state</code> &#x7684;&#x8C03;&#x6574;&#x80FD;&#x4F5C;&#x7528;&#x4E8E;&#x7EC4;&#x4EF6;&#xFF0C;&#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x80AF;&#x5B9A;&#x4F1A;&#x6709;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x9488;&#x5BF9; <code>store</code> &#x7684; <code>subscribe</code>&#x3002;</li>
+<li>&#x5F53;&#x7EC4;&#x4EF6;&#x9500;&#x6BC1;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x6CE8;&#x9500;&#x76F8;&#x5E94;&#x7684; <code>subscribe</code>&#x3002;</li>
+</ol>
+<ol>
+<li><p>connect</p>
+</li>
+<li><p>&#x63A5;&#x6536;<code>mapStateToProps</code> &#x65B9;&#x6CD5;&#xFF0C;&#x63A5;&#x6536;&#x4E00;&#x4E2A; <code>state</code> &#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; <code>state</code> &#x7684;&#x4E00;&#x4E2A;&#x6620;&#x5C04;&#x96C6;&#x5408;</p>
+</li>
+<li>&#x63A5;&#x6536;<code>mapDispatchToProps</code> &#x65B9;&#x6CD5;&#xFF0C;&#x63A5;&#x6536;&#x4E00;&#x4E2A; <code>dispath</code> &#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;<code>dispatch</code>&#x76F8;&#x5E94;<code>action</code>&#x7684;&#x96C6;&#x5408;</li>
+<li>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x63A5;&#x6536;<code>Component</code>&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5C06;&#x4E0A;&#x9762;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x751F;&#x4EA7;&#x7684;&#x7ED3;&#x679C;&#x4F5C;&#x4E3A;<code>props</code>&#x4F20;&#x9012;&#x7ED9;<code>Componet</code>&#x3002;&#x6700;&#x7EC8;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#xFF0C;&#x53EF;&#x80FD;&#x6BD4;&#x8F83;&#x62BD;&#x8C61;&#xFF0C;&#x8FD9;&#x91CC;&#x5927;&#x6982;&#x5199;&#x4E00;&#x4E0B;&#x3002;</li>
+</ol>
+<pre><code class="lang-typescript">// &#x4E3A;&#x4E86;&#x8BA9; mapStateToProps mapDispatchToProps  &#x80FD;&#x62FF;&#x5230; state &#x548C; dispatch&#x6211;&#x4EEC;&#x9700;&#x8981;&#x501F;&#x52A9;&#x4E00;&#x4E2A;Consumer
+const connect = (mapStateToProps, mapDispatchToProps)=&gt;{
+    return WarpComponent=&gt;{
+        // &#x5185;&#x90E8;&#x95ED;&#x5305;
+        return props=&gt;{
+            const Consumer = props.context.Consumer;
+            return &lt;Consumer&gt;
+                {
+                    store=&gt;{
+                        return &lt;WarpComponent
+                                ...props
+                                ...mapDispatchToProps(store.dispatch)
+                                ...mapStateToProps(store.state)/&gt;
+                        }
+                    }
+                }
+            &lt;/Consumer&gt;
+        }
+
+    }
+}
+</code></pre>
+<p>&#x5B9E;&#x9645;&#x6E90;&#x7801;&#x601D;&#x8DEF;&#x548C;&#x8FD9;&#x4E2A;&#x4E5F;&#x662F;&#x5DEE;&#x4E0D;&#x591A;&#x7684;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x591A;&#x4E86;&#x5F88;&#x591A;&#x6570;&#x636E;&#x7684;normalize&#x5904;&#x7406;&#x3002;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x5C55;&#x5F00;&#x8BE6;&#x8FF0;&#x4E86;&#x3002;</p>
+<p>that&apos;s all tk.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="react.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: react一些基本思路">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"react状态管理","level":"1.5","depth":1,"previous":{"title":"react一些基本思路","level":"1.4","depth":1,"path":"content/react.md","ref":"content/react.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"content/redux.md","mtime":"2019-01-11T06:11:45.703Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-11T07:18:33.715Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
