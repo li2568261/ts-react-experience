@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="screen-orientation" content="portrait"/>
+	<meta name="full-screen" content="yes"/>
+	<meta name="browsermode" content="application"/>
+	<meta name="x5-orientation" content="portrait"/>
+	<meta name="x5-fullscreen" content="true"/>
+	<meta name="x5-page-mode" content="app"/>
+	<meta http-equiv="Expires" content="-1"/>
+	<meta http-equiv="Cache-Control" content="no-cache"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+    <script>
+        (function (e, d, a, h) {
+            var f = d.screen.width / a / d.devicePixelRatio;
+            h && e.querySelector("meta[name=viewport]").setAttribute("content", "target-densitydpi=device-dpi,width=" +
+            a + ",user-scalable=no,initial-scale=" + f);
+            var g = e.documentElement;
+            var c = "orientationchange" in window ? "orientationchange" : "resize";
+            d.setRootRem = function () {
+            var r = (h ? 10 : 100) * (g.clientWidth / a);
+            var s = e.createElement("style");
+            s.innerHTML = 'html{font-size:' + r + 'px;}';
+            e.getElementsByTagName('head')[0].appendChild(s);
+            g.style.fontSize = r + "px";
+            };
+            var b = d.setRootRem;
+            d.addEventListener(c, b, false);
+            e.addEventListener("DOMContentLoaded", b, false)
+        })(document, window, 750, false);
+    </script>
+  
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>
