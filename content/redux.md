@@ -55,7 +55,7 @@ const App = (props)=>{
 
 ### redux
 
-实际`spa`项目中，公用数据模型往往比较复杂，使用上面那种方式很容易逻辑混乱，为了使其能够便于管理，常常会引入`redux`。通过阅读[redux](https://github.com/li2568261/react-redux-source-read/tree/master/redux)源码发现，他是典型的以订阅发布模式设计思路，用纯函数处理数据流。主要有以下一些概念：
+实际`spa`项目中，公用数据模型往往比较复杂，使用上面那种方式很容易逻辑混乱，为了使其能够便于管理，常常会引入`redux`。通过阅读[redux](https://github.com/li2568261/ts-react-experience/tree/master/redux-source-read)源码发现，他是典型的以订阅发布模式设计思路，用纯函数处理数据流。主要有以下一些概念：
 
 1. reducer 用作定义 state 更新方式。
 2. action 用作 state 更新指令，一般 type 是它必有的属性。
